@@ -65,7 +65,13 @@
 
       function getContext() {}
 
-      async function getUserProfile() {}
+      async function getUserProfile() {
+        const profile = await liff.getProfile();
+        document.getElementById("pictureUrl").src = profile.pictureUrl;
+        document.getElementById("userId").append(profile.userId);
+        document.getElementById("statusMessage").append(profile.statusMessage);
+        document.getElementById("displayName").append(profile.displayName);
+      }
 
       function getEnvironment() {
         document.getElementById("os").append(liff.getOS());
@@ -77,8 +83,8 @@
 
       async function main() {
         await liff.init({ liffId: "1661089508-LNV0ekEM" });
-        // getEnvironment()
-        // getUserProfile()
+        getEnvironment();
+        getUserProfile();
         // getContext()
         // getFriendship()
         // createUniversalLink()
